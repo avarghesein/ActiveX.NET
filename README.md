@@ -1,7 +1,7 @@
 # ActiveX.NET
 A true Out-Of-Proc (EXE) COM server implemented in C# Windows Application based on MEF Plugin Architecture. Develop COM objects in C# Libraries, which automatically get hosted in EXE COM Server, with minimal configuration.
 
-Originally inspired from [CSExeCOMServer](https://code.msdn.microsoft.com/windowsapps/CSExeCOMServer-3b1c1054) published in https://code.msdn.microsoft.com . The idea is to improve the original implementation, with the below features:
+Originally inspired from [CSExeCOMServer](https://code.msdn.microsoft.com/windowsapps/CSExeCOMServer-3b1c1054) published in https://code.msdn.microsoft.com . The idea is to provide a more advanced implementation, with the below features:
 
 1. Replace Native Windows Message Loop, with .NET Windows Message Loop (Application.Run)
 
