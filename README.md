@@ -18,8 +18,20 @@ Originally inspired from [CSExeCOMServer](https://code.msdn.microsoft.com/window
 
 ![alt Architecture](https://github.com/avarghesein/ActiveX.NET/blob/master/ActiveX.NET.Architecture.jpg)
 
+HOW TO RUN THE PROJECT?
 
-HOW TO USE?
+       a. Run Visual Studio As Administrator
+       b. Make "ActiveX.NET.Server" as startup project
+       c. Ensure CommandLine Arguments value to "/regserver" in Debug Tab
+       d. Hit F5 To Run the selected project, and wait until it finishes execution
+       e. Open the excel (Enable Macros While Opening) and open its VBA Editor, and run the sample VBA Macro.
+       f. You should be viewing Hello World Message from VBA
+       
+   ![alt RunningSource](https://github.com/avarghesein/ActiveX.NET/blob/master/RunningSource.jpg)
+       
+
+
+HOW TO DEVELOP YOUR OWN COM-PLUGIN DLL(S)?
 
 a.	Create your COM Visible Plug-In DLL(s)
 
