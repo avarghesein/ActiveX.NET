@@ -5,15 +5,15 @@ Originally inspired from [CSExeCOMServer](https://code.msdn.microsoft.com/window
 
 1. Replace Native Windows Message Loop, with .NET Windows Message Loop (Application.Run)
 
-This will enable leveraging .NET Win Forms/UserControls inside COM Objects created within .NET 
+       This will enable leveraging .NET Win Forms/UserControls inside COM Objects created within .NET 
 
 2. Decouple Out-Of-Process EXE Server and make it as a shared EXE COM Server
 
-This will enable loading user created COM Visible Libraries dynamically
+       This will enable loading user created COM Visible Libraries dynamically
 
 3. Help developers build COM Objects easily, targeting for EXE COM Server
 
-Let developer build COM objects without worrying about reference counting, and registering for Out Of Proc use. Enable the COM Object for Out Of use by simply applying a few attributes, base classes.
+       Let developer build COM objects without worrying about reference counting, and registering for Out Of Proc use. Enable the COM Object for Out Of use by simply applying a few attributes, base classes.
 
 
 Architecture
