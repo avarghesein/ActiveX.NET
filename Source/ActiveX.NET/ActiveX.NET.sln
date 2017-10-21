@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{90CEDDC2-F185-4B0C-AB70-1A761AE7B28A}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\ActiveX.NET.Architecture.jpg = ..\..\ActiveX.NET.Architecture.jpg
+		..\..\COMObjectForOutOfProcSample.JPG = ..\..\COMObjectForOutOfProcSample.JPG
 	EndProjectSection
 EndProject
 Global
