@@ -16,8 +16,7 @@ Originally inspired from [CSExeCOMServer](https://code.msdn.microsoft.com/window
        Let developer build COM objects without worrying about reference counting, and registering for Out Of Proc use. Enable the COM Object for Out Of use by simply applying a few attributes, base classes.
 
 
-Architecture
-![alt ](https://github.com/avarghesein/ActiveX.NET/blob/master/ActiveX.NET.Architecture.jpg)
+![alt Architecture](https://github.com/avarghesein/ActiveX.NET/blob/master/ActiveX.NET.Architecture.jpg)
 
 
 HOW TO USE?
