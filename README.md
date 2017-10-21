@@ -17,7 +17,7 @@ Originally inspired from [CSExeCOMServer](https://code.msdn.microsoft.com/window
 
 
 Architecture
-![alt Architecture](https://github.com/avarghesein/ActiveX.NET/blob/master/ActiveX.NET.Architecture.jpg)
+![alt ](https://github.com/avarghesein/ActiveX.NET/blob/master/ActiveX.NET.Architecture.jpg)
 
 
 HOW TO USE?
