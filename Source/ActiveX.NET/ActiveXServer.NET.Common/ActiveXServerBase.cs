@@ -14,27 +14,27 @@ namespace ActiveX.NET.Common
 {
     public abstract class ActiveXServerBase : IActiveXServer
     {
-        [Import("LockActiveXServer",typeof(Func<int>))]
-        protected Func<int> LockActiveXServerDelegate;
+        [Import("LockActiveXServer", typeof(Func<int>))]
+        public Func<int> LockActiveXServer { get; set; }
 
         [Import("UnLockActiveXServer", typeof(Func<int>))]
-        protected Func<int> UnLockActiveXServerDelegate;
+        public Func<int> UnLockActiveXServer { get; set; }
 
         public ActiveXServerBase()
         {
-            // Increment the lock count of objects in the COM server.
-            if (LockActiveXServerDelegate != null)
+            // Increment the lock count of objects in the COM server. (This will not work, We've to call it manually)
+            if (LockActiveXServer != null)
             {
-                LockActiveXServerDelegate();
+                LockActiveXServer();
             }
         }
 
-         ~ActiveXServerBase()
+        ~ActiveXServerBase()
         {
             // Decrement the lock count of objects in the COM server.
-            if (UnLockActiveXServerDelegate != null)
+            if (UnLockActiveXServer != null)
             {
-                UnLockActiveXServerDelegate();
+                UnLockActiveXServer();
             }
         }
 

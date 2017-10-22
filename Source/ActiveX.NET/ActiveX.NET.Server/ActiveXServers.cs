@@ -71,6 +71,19 @@ namespace ActiveX.NET.Server
             return servers;
         }
 
+        public IActiveXServer CreateActiveXObject(ActiveXServer server)
+        {
+            var activeXTemplateObject = _comServers.Where(comServer => comServer.Metadata.CoClassType == server.CoClassType).FirstOrDefault().Value;
+
+            var activeXObject = Activator.CreateInstance(server.CoClassType) as IActiveXServer;
+            activeXObject.LockActiveXServer = activeXTemplateObject.LockActiveXServer;
+            activeXObject.UnLockActiveXServer = activeXTemplateObject.UnLockActiveXServer;
+            //Lock Server
+            activeXObject.LockActiveXServer();
+
+            return activeXObject;
+        }
+
         public IActiveXServer GetServerInstance(ActiveXServer server)
         {
             return _comServers.Where(plugin => plugin.Metadata.CoClassType == server.CoClassType).First().Value;

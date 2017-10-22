@@ -76,7 +76,7 @@ namespace ActiveX.NET.Server
                 // Register the SimpleObject class object
                 hResult = ActiveXNative.CoRegisterClassObject(
                     ref clsidSimpleObj,                 // CLSID to be registered
-                    new DefaultActiveXFactory(comServer),     // Class factory
+                    new DefaultActiveXFactory(comServer,_comServers),     // Class factory
                     CLSCTX.LOCAL_SERVER,                // Context to run
                     REGCLS.MULTIPLEUSE | REGCLS.SUSPENDED,
                     out comRegCookie);

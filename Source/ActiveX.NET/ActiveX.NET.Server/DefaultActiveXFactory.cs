@@ -11,10 +11,14 @@ namespace ActiveX.NET.Server
     internal class DefaultActiveXFactory : IClassFactory
     {
         private ActiveXServer _server;
-        public DefaultActiveXFactory(ActiveXServer server)
+        private ActiveXServers _serverContext;
+
+        public DefaultActiveXFactory(ActiveXServer server, ActiveXServers serverContext)
         {
             _server = server;
+            _serverContext = serverContext;
         }
+
         public int CreateInstance(IntPtr pUnkOuter, ref Guid riid,
             out IntPtr ppvObject)
         {
@@ -32,7 +36,7 @@ namespace ActiveX.NET.Server
                 riid == new Guid(ActiveXNative.IID_IUnknown))
             {
                 // Create the instance of the .NET object
-                ppvObject = Marshal.GetComInterfaceForObject(Activator.CreateInstance(_server.CoClassType), _server.PrimaryInterface);
+                ppvObject = Marshal.GetComInterfaceForObject(_serverContext.CreateActiveXObject(_server), _server.PrimaryInterface);
             }
             else
             {

@@ -8,5 +8,8 @@ namespace ActiveX.NET.Common
 {
     public interface IActiveXServer
     {
+        Func<int> LockActiveXServer { get; set; }
+
+        Func<int> UnLockActiveXServer { get; set; }
     };
 };
