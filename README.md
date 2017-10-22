@@ -1,7 +1,7 @@
 # ActiveX.NET
 A true Out-Of-Proc (EXE) COM server implemented in C# Windows Application based on MEF Plugin Architecture. Develop COM objects in C# Libraries, which automatically get hosted in EXE COM Server, with minimal configuration.
 
-Originally inspired from [CSExeCOMServer](https://code.msdn.microsoft.com/windowsapps/CSExeCOMServer-3b1c1054) published in https://code.msdn.microsoft.com . The idea is to improve the original implementation, with the below features:
+Originally inspired from [CSExeCOMServer](https://code.msdn.microsoft.com/windowsapps/CSExeCOMServer-3b1c1054) published in https://code.msdn.microsoft.com . The idea is to provide a more advanced implementation, with the below features:
 
 1. Replace Native Windows Message Loop, with .NET Windows Message Loop (Application.Run)
 
@@ -13,13 +13,25 @@ Originally inspired from [CSExeCOMServer](https://code.msdn.microsoft.com/window
 
 3. Help developers build COM Objects easily, targeting for EXE COM Server
 
-       Let developer build COM objects without worrying about reference counting, and registering for Out Of Proc use. Enable the COM Object for Out Of use by simply applying a few attributes, base classes.
+       Let developer build COM objects without worrying about reference counting, and registering for Out-Of-Proc use. Enable the COM Object for Out-Of-Proc use by simply applying a few attributes, base classes.
 
 
 ![alt Architecture](https://github.com/avarghesein/ActiveX.NET/blob/master/ActiveX.NET.Architecture.jpg)
 
+HOW TO RUN THE PROJECT?
 
-HOW TO USE?
+       a. Run Visual Studio As Administrator
+       b. Make "ActiveX.NET.Server" as startup project
+       c. Ensure CommandLine Arguments value to "/regserver" in Debug Tab
+       d. Hit F5 To Run the selected project, and wait until it finishes execution
+       e. Open the excel (Enable Macros While Opening) and open its VBA Editor, and run the sample VBA Macro.
+       f. You should be viewing Hello World Message from VBA
+       
+   ![alt RunningSource](https://github.com/avarghesein/ActiveX.NET/blob/master/RunningSource.jpg)
+       
+
+
+HOW TO DEVELOP YOUR OWN COM-PLUGIN DLL(S)?
 
 a.	Create your COM Visible Plug-In DLL(s)
 
