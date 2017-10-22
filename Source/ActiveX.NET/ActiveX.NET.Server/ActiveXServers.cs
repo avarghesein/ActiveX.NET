@@ -84,11 +84,6 @@ namespace ActiveX.NET.Server
             return activeXObject;
         }
 
-        public IActiveXServer GetServerInstance(ActiveXServer server)
-        {
-            return _comServers.Where(plugin => plugin.Metadata.CoClassType == server.CoClassType).First().Value;
-        }
-
         [Export("LockActiveXServer", typeof(Func<int>))]
         protected int LockActiveXServer()
         {
