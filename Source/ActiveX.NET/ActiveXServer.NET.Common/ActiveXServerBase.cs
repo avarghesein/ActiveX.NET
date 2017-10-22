@@ -23,10 +23,10 @@ namespace ActiveX.NET.Common
         public ActiveXServerBase()
         {
             // Increment the lock count of objects in the COM server. (This will not work, We've to call it manually)
-            if (LockActiveXServer != null)
+            /*if (LockActiveXServer != null)
             {
                 LockActiveXServer();
-            }
+            }*/
         }
 
         ~ActiveXServerBase()
