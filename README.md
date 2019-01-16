@@ -70,3 +70,7 @@ e.	To Unregister Plug-In DLL(S)
 
       Sample: C:> ActiveX.NET.Server.exe /unregserver
 
+
+# What's Next?
+Try create a ComVisible Windows User Control, that could be used from ComClients like VB.
+You may refer one sample [here](https://haseebakhtar.wordpress.com/2011/05/31/creating-an-activex-control-in-net-using-c/)
