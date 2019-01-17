@@ -48,7 +48,7 @@ a.	Create your COM Visible Plug-In DLL(s)
    ![alt Sample](https://github.com/avarghesein/ActiveX.NET/blob/master/COMObjectForOutOfProcSample.JPG)
   
 
-Note: By default the COM Objects (Derived from ActiveXServerBase), will be run under STA (i.e ActiveXServer.NET's UI Thread). If you need parallelism, you shoud inherit your ComObject from [ActiveXServerMTABase](https://github.com/avarghesein/ActiveX.NET/blob/master/Source/ActiveX.NET/ActiveXServer.NET.Common/ActiveXServerMTABase.cs), to be part of MTA (which uses FreeThreadedMarshaller)
+Note: By default the COM Objects (Derived from [ActiveXServerBase](https://github.com/avarghesein/ActiveX.NET/blob/master/Source/ActiveX.NET/ActiveXServer.NET.Common/ActiveXServerBase.cs)), will be run under STA (i.e ActiveXServer.NET's UI Thread). If you need parallelism, you shoud inherit your ComObject from [ActiveXServerMTABase](https://github.com/avarghesein/ActiveX.NET/blob/master/Source/ActiveX.NET/ActiveXServer.NET.Common/ActiveXServerMTABase.cs), to be part of MTA (which uses FreeThreadedMarshaller)
 
 b.	Copy the Plugin-In DLL(s), to the configured Plug-In Location
 
