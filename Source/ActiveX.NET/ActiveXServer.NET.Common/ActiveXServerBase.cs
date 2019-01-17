@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ActiveX.NET.Common
 {
-    public abstract class ActiveXServerBase : IActiveXServer
+    public abstract class ActiveXServerBase : StandardOleMarshalObject, IActiveXServer
     {
         [Import("LockActiveXServer", typeof(Func<int>))]
         public Func<int> LockActiveXServer { get; set; }
