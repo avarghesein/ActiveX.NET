@@ -48,6 +48,8 @@ a.	Create your COM Visible Plug-In DLL(s)
    ![alt Sample](https://github.com/avarghesein/ActiveX.NET/blob/master/COMObjectForOutOfProcSample.JPG)
   
 
+Note: By default the COM Objects (Derived from ActiveXServerBase), will be run under STA (i.e ActiveXServer.NET's UI Thread). If you need parallelism, you shoud inherit your ComObject from [ActiveXServerMTABase](https://github.com/avarghesein/ActiveX.NET/blob/master/Source/ActiveX.NET/ActiveXServer.NET.Common/ActiveXServerMTABase.cs), to be part of MTA (which uses FreeThreadedMarshaller)
+
 b.	Copy the Plugin-In DLL(s), to the configured Plug-In Location
 
      Location should be configured in the ActiveX.NET.Server config/appsetting: “ActiveXServerPlugins:Location”
@@ -74,3 +76,5 @@ e.	To Unregister Plug-In DLL(S)
 # What's Next?
 Try create a ComVisible Windows User Control, that could be used from ComClients like VB.
 You may refer one sample [here](https://haseebakhtar.wordpress.com/2011/05/31/creating-an-activex-control-in-net-using-c/)
+
+Note: For Windows Forms based UserControls, you should inherit your control/ComObject from [ActiveXServerControlBase](https://github.com/avarghesein/ActiveX.NET/blob/master/Source/ActiveX.NET/ActiveXServer.NET.Common/ActiveXServerControlBase.cs), instead of ActiveXServerBase
