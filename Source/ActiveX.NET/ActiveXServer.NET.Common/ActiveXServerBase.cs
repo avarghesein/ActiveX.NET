@@ -23,6 +23,8 @@ namespace ActiveX.NET.Common
         public ActiveXServerBase()
         {
             // Increment the lock count of objects in the COM server. (This will not work, We've to call it manually)
+            // MEF will resolve dependencies only after creation (i.e. After Constructor Calls)
+            // i.e LockActiveXServer, will be injected only after Constructor invocation
             /*if (LockActiveXServer != null)
             {
                 LockActiveXServer();
@@ -38,11 +40,6 @@ namespace ActiveX.NET.Common
             }
         }
 
-         private static bool ValidateActiveXServerAttribute(Type t)
-         {
-             return t.GetCustomAttributes<ActiveXServerAttribute>().Any();
-         }
-
          /// <summary>
          /// Register the component as a local server.
          /// </summary>
@@ -51,24 +48,7 @@ namespace ActiveX.NET.Common
          [ComRegisterFunction()]
          public static void RegasmRegisterLocalServer(Type t)
          {
-             GuardNullType(t, "t");  // Check the argument
-
-             if (!ValidateActiveXServerAttribute(t)) return;
-
-             // Open the CLSID key of the component.
-             using (RegistryKey keyCLSID = Registry.ClassesRoot.OpenSubKey(
-                 @"CLSID\" + t.GUID.ToString("B"), /*writable*/true))
-             {
-                 // Remove the auto-generated InprocServer32 key after registration
-                 // (REGASM puts it there but we are going out-of-proc).
-                 keyCLSID.DeleteSubKeyTree("InprocServer32");
-
-                 // Create "LocalServer32" under the CLSID key
-                 using (RegistryKey subkey = keyCLSID.CreateSubKey("LocalServer32"))
-                 {
-                     subkey.SetValue("", Assembly.GetEntryAssembly().Location, RegistryValueKind.String);
-                 }
-             }
+             RegistrationUtility.RegisterLocalServer(t);
          }
 
          /// <summary>
@@ -79,20 +59,7 @@ namespace ActiveX.NET.Common
          [ComUnregisterFunction()]
          public static void RegasmUnregisterLocalServer(Type t)
          {
-             GuardNullType(t, "t");  // Check the argument
-
-             if (!ValidateActiveXServerAttribute(t)) return;
-
-             // Delete the CLSID key of the component
-             Registry.ClassesRoot.DeleteSubKeyTree(@"CLSID\" + t.GUID.ToString("B"));
-         }
-
-         private static void GuardNullType(Type t, String param)
-         {
-             if (t == null)
-             {
-                 throw new ArgumentException("The CLR type must be specified.", param);
-             }
+             RegistrationUtility.UnregisterLocalServer(t);
          }
     };
 };
