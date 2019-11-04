@@ -33,19 +33,26 @@ namespace ActiveX.NET.Common
 
             if (!ValidateActiveXServerAttribute(t)) return;
 
-            // Open the CLSID key of the component.
-            using (RegistryKey keyCLSID = Registry.ClassesRoot.OpenSubKey(
-                @"CLSID\" + t.GUID.ToString("B"), /*writable*/true))
+            try
             {
-                // Remove the auto-generated InprocServer32 key after registration
-                // (REGASM puts it there but we are going out-of-proc).
-                keyCLSID.DeleteSubKeyTree("InprocServer32");
-
-                // Create "LocalServer32" under the CLSID key
-                using (RegistryKey subkey = keyCLSID.CreateSubKey("LocalServer32"))
+                // Open the CLSID key of the component.
+                using (RegistryKey keyCLSID = Registry.ClassesRoot.OpenSubKey(
+                    @"CLSID\" + t.GUID.ToString("B"), /*writable*/true))
                 {
-                    subkey.SetValue("", Assembly.GetEntryAssembly().Location, RegistryValueKind.String);
+                    // Remove the auto-generated InprocServer32 key after registration
+                    // (REGASM puts it there but we are going out-of-proc).
+                    keyCLSID.DeleteSubKeyTree("InprocServer32");
+
+                    // Create "LocalServer32" under the CLSID key
+                    using (RegistryKey subkey = keyCLSID.CreateSubKey("LocalServer32"))
+                    {
+                        subkey.SetValue("", Assembly.GetEntryAssembly().Location, RegistryValueKind.String);
+                    }
                 }
+            }
+            catch (Exception eX)
+            {
+                System.Windows.Forms.MessageBox.Show(eX.Message);
             }
         }
 
@@ -59,8 +66,15 @@ namespace ActiveX.NET.Common
 
             if (!ValidateActiveXServerAttribute(t)) return;
 
-            // Delete the CLSID key of the component
-            Registry.ClassesRoot.DeleteSubKeyTree(@"CLSID\" + t.GUID.ToString("B"));
+            try
+            {
+                // Delete the CLSID key of the component
+                Registry.ClassesRoot.DeleteSubKeyTree(@"CLSID\" + t.GUID.ToString("B"));
+            }
+            catch(Exception eX)
+            {
+                System.Windows.Forms.MessageBox.Show(eX.Message);
+            }
         }
     };
 };
